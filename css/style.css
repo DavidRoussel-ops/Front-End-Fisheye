@@ -47,4 +47,25 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+}
+
+.photographer_section article .pId {
+    display: none;
+}
+
+.photographer_section article .cityCountry {
+    display: flex;
+}
+
+.photographer_section article .pCity {
+    color: #901C1C;
+}
+
+.photographer_section article .pCountry {
+    color: #901C1C;
+}
+
+.photographer_section article .pPrice {
+    color: #525252;
 }
