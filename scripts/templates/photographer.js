@@ -1,32 +1,40 @@
-async function photographerTemplate(data) {
-    const reponce = await fetch("./data/photographers.json");
-    data = await reponce.json();
-    console.log(data[0]);
+function photographerTemplate(data) {
+    const { name, portrait, id, city, country, tagline, price } = data;
 
-    async function getUserCardDOM() {
-        const article = document.createElement('article');
-        const idPhotographer = data.id;
-        const imgPhotographer = document.createElement('img');
-        imgPhotographer.setAttribute("src", data.portrait)
-        const namePhotographer = document.createElement('h2');
-        namePhotographer.textContent = data.name;
-        const countryPhotographer = document.createElement("p");
-        countryPhotographer.textContent = data.country;
-        const cityPhotographer = document.createElement("p");
-        cityPhotographer.textContent = data.city;
-        const tagLinePhotographer = document.createElement("p");
-        tagLinePhotographer.textContent = data.tagline;
-        const pricePhotographer = document.createElement("p");
-        pricePhotographer.textContent = `${data.price}€/jour`;
-        article.appendChild(idPhotographer);
-        article.appendChild(imgPhotographer);
-        article.appendChild(namePhotographer);
-        article.appendChild(countryPhotographer);
-        article.appendChild(cityPhotographer);
-        article.appendChild(tagLinePhotographer);
-        article.appendChild(pricePhotographer);
+    const picture = `assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`;
+
+    function getUserCardDOM() {
+        const article = document.createElement( 'article' );
+        const cityCountry = document.createElement("div");
+        cityCountry.classList.add("cityCountry");
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        const h2 = document.createElement( 'h2' );
+        h2.textContent = name;
+        const pId = document.createElement("p");
+        pId.textContent = id;
+        pId.classList.add("pId");
+        const pCity = document.createElement("p");
+        pCity.textContent = `${city},`;
+        pCity.classList.add("pCity");
+        const pCountry = document.createElement("p");
+        pCountry.textContent = ` ${country}`;
+        pCountry.classList.add("pCountry");
+        const pTagline = document.createElement("p");
+        pTagline.textContent = tagline;
+        pTagline.classList.add("pTagline");
+        const pPrice = document.createElement("p");
+        pPrice.textContent = `${price}€/jour`;
+        pPrice.classList.add("pPrice");
+        cityCountry.appendChild(pCity);
+        cityCountry.appendChild(pCountry);
+        article.appendChild(img);
+        article.appendChild(h2);
+        article.appendChild(pId);
+        article.appendChild(cityCountry);
+        article.appendChild(pTagline);
+        article.appendChild(pPrice);
         return (article);
     }
-
-    return {getUserCardDOM}
+    return { name, picture, id, city, country, tagline, price, getUserCardDOM }
 }
