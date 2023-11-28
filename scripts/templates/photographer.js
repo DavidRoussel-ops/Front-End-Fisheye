@@ -7,6 +7,11 @@ function photographerTemplate(data) {
         const article = document.createElement( 'article' );
         const cityCountry = document.createElement("div");
         cityCountry.classList.add("cityCountry");
+        const containerPictureH2 = document.createElement("div");
+        containerPictureH2.id = "containerPictureH2";
+        containerPictureH2.addEventListener("click", () => {
+            console.log("clické");
+        })
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
@@ -26,10 +31,11 @@ function photographerTemplate(data) {
         const pPrice = document.createElement("p");
         pPrice.textContent = `${price}€/jour`;
         pPrice.classList.add("pPrice");
+        containerPictureH2.appendChild(img);
+        containerPictureH2.appendChild(h2);
         cityCountry.appendChild(pCity);
         cityCountry.appendChild(pCountry);
-        article.appendChild(img);
-        article.appendChild(h2);
+        article.appendChild(containerPictureH2);
         article.appendChild(pId);
         article.appendChild(cityCountry);
         article.appendChild(pTagline);
