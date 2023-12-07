@@ -1,19 +1,27 @@
+import {photographerTemplate} from "../templates/photographer.js";
+
 async function getPhotographers() {
-    const reponce = await fetch("./data/photographers.json");
+    const reponce = await fetch("http://localhost:8081/photographers");
     const reponceContenu = await reponce.json();
     console.log(reponceContenu);
     return reponceContenu
 }
 
-async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section");
+async function displayData() {
+    let contenu = await fetch("http://localhost:8081/photographers");
+    let photographers = await contenu.json();
+    let prout = getPhotographers();
+    console.log(prout);
 
-    photographers.forEach((photographer) => {
+    for await (let photographer of photographers) {
         const photographerModel = photographerTemplate(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        console.log(userCardDOM);
-        photographersSection.appendChild(userCardDOM);
-    });
+        const userCardDOM = (await photographerModel).getUserCardDOM(photographer);
+    }
+
+
+    /*photographers.forEach((photographer) => {
+
+    })*/
 }
 
 async function init() {
@@ -23,4 +31,5 @@ async function init() {
 }
 
 init();
+
     
