@@ -1,15 +1,17 @@
-function photographerTemplate(data) {
+export async function photographerTemplate(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`;
 
-    function getUserCardDOM() {
+     async function getUserCardDOM() {
+        const section = document.querySelector(".photographer_section");
         const article = document.createElement( 'article' );
         const cityCountry = document.createElement("div");
         cityCountry.classList.add("cityCountry");
         const containerPictureH2 = document.createElement("a");
-        containerPictureH2.id = "containerPictureH2";
-        containerPictureH2.setAttribute("href", "photographer.html");
+        containerPictureH2.classList.add("containerPictureH2");
+        containerPictureH2.setAttribute("href", `photographer.html`);
+        containerPictureH2.dataset.id = id;
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
@@ -38,7 +40,7 @@ function photographerTemplate(data) {
         article.appendChild(cityCountry);
         article.appendChild(pTagline);
         article.appendChild(pPrice);
-        return (article);
+        section.appendChild(article);
     }
     return { name, picture, id, city, country, tagline, price, getUserCardDOM }
 }
