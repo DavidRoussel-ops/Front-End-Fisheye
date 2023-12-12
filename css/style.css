@@ -39,7 +39,7 @@ h1 {
     flex-direction: column;
 }
 
-#containerPictureH2 {
+.containerPictureH2 {
     text-align: center;
     text-decoration: none;
 }
