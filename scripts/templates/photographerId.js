@@ -12,6 +12,8 @@ export async function photographerIdTemplate(data) {
         img.setAttribute("src", picture);
         const namePhotographer = document.createElement("h1");
         namePhotographer.textContent = name;
+        const containerCityCountry = document.createElement("div");
+        containerCityCountry.classList.add("cityCountry");
         const cityPhotographer = document.createElement("p");
         cityPhotographer.textContent = `${city},`;
         cityPhotographer.classList.add("pCity");
@@ -25,12 +27,14 @@ export async function photographerIdTemplate(data) {
         pricePhotographer.textContent = `${price}€ / jour`;
         pricePhotographer.classList.add("pPrice");
         container.appendChild(namePhotographer);
-        container.appendChild(cityPhotographer);
-        container.appendChild(countryPhotographer);
+        containerCityCountry.appendChild(cityPhotographer);
+        containerCityCountry.appendChild(countryPhotographer);
+        container.appendChild(containerCityCountry);
         container.appendChild(taglinePhotographer);
         section.appendChild(container);
         section.appendChild(btnModal);
         section.appendChild(img);
+        section.appendChild(pricePhotographer);
     }
     return { name, picture, id, city, country, tagline, price, getOnePhotographer }
 }
