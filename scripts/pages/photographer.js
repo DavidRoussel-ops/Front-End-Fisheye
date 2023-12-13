@@ -1,6 +1,7 @@
 import {photographerIdTemplate} from "../templates/photographerId.js";
+import {createModal} from "../templates/modal.js";
 
-async function getMedia() {
+async function getPhotographers() {
     const response = await fetch("http://localhost:8081/photographers");
     const responseMedia = await response.json();
     console.log(responseMedia);
@@ -18,9 +19,17 @@ async function displayPhotographers() {
     }
 }
 
+async function showModal() {
+    const modalContact = document.getElementById("contact_modal");
+    const base = createModal();
+    const modal = (await base).modal();
+    await modalContact.appendChild(modal);
+}
+
 async function init() {
-    const { photographers } = await getMedia();
+    const { photographers } = await getPhotographers();
     await displayPhotographers(photographers);
+    await showModal();
 }
 
 init();
