@@ -14,6 +14,7 @@ export async function photographerTemplate(data) {
            containerPictureH2.dataset.id = id;
            const img = document.createElement( 'img' );
            img.setAttribute("src", picture);
+           img.setAttribute("alt", name);
            const h2 = document.createElement( 'h2' );
            h2.textContent = name;
            const pId = document.createElement("p");
