@@ -16,17 +16,18 @@
     <div class="photographer-header">
         <button type="button" class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
+    <div class="divSelect">
+        <label>Triez par
+            <select class="selectOption">
+                <option>Popularité</option>
+                <option>Date</option>
+                <option>Titre</option>
+            </select>
+        </label>
+    </div>
+    <div class="media-display"></div>
 </main>
 <div id="contact_modal"></div>
-<div class="divSelect">
-    <label>Triez par
-        <select class="selectOption">
-            <option>Popularité</option>
-            <option>Date</option>
-            <option>Titre</option>
-        </select>
-    </label>
-</div>
 <script src="./scripts/utils/contactForm.js"></script>
 <script type="module" src="./scripts/pages/photographer.js"></script>
 <script type="module" src="scripts/templates/modal.js"></script>
