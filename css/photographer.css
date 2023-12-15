@@ -203,3 +203,14 @@ form input {
     cursor: pointer;
     margin-left: 20px;
 }
+
+.mediaArticle {
+    width: 200px;
+    height: 100px;
+    display: flex;
+}
+
+.imageMedia {
+    width: 150px;
+    height: 100px;
+}
