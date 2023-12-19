@@ -12,19 +12,14 @@ async function getPhotographers() {
 async function getMedias() {
     const fetchCall = await fetch("http://localhost:8081/media");
     const responceMedia = await fetchCall.json();
-    console.log(responceMedia);
 }
 
 async function displayPhotographers() {
-    const apiPhotographer = await fetch("http://localhost:8081/photographers");
-    const arrayPhotographers = await apiPhotographer.json();
-
-    for await (let photographer of arrayPhotographers) {
-        console.log(photographer);
-        const photographerIdModel = photographerIdTemplate(photographer);
-        const idCardDOM = (await photographerIdModel).getOnePhotographer(photographer);
-        return idCardDOM
-    }
+    const templatePhotographer = photographerIdTemplate();
+    const photographer = (await templatePhotographer).getOnePhotographer;
+    const organisation = getPhotographers(photographer);
+    const main = document.getElementById("main");
+    await main.appendChild(await organisation);
 }
 
 async function displayMedias(data) {
@@ -34,7 +29,6 @@ async function displayMedias(data) {
 
     for (let i = 0; i < arrayMedias.length; i++) {
         let idPhotographer = arrayMedias.map(arrayMedias => arrayMedias.photographerId = 243);
-        console.log(idPhotographer);
     }
 
     for (let media of arrayMedias) {
