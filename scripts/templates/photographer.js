@@ -1,3 +1,5 @@
+import {getIdPhotographer} from "../utils/changePage.js";
+
 export async function photographerTemplate(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
 
@@ -8,9 +10,8 @@ export async function photographerTemplate(data) {
            const article = document.createElement( 'article' );
            const cityCountry = document.createElement("div");
            cityCountry.classList.add("cityCountry");
-           const containerPictureH2 = document.createElement("a");
+           const containerPictureH2 = document.createElement("div");
            containerPictureH2.classList.add("containerPictureH2");
-           containerPictureH2.setAttribute("href", `#`);
            containerPictureH2.dataset.id = id;
            const img = document.createElement( 'img' );
            img.setAttribute("src", picture);
@@ -43,5 +44,6 @@ export async function photographerTemplate(data) {
            article.appendChild(pPrice);
            section.appendChild(article);
     }
+      getIdPhotographer();
     return { name, picture, id, city, country, tagline, price, getUserCardDOM }
 }
