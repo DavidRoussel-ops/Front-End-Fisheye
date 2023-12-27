@@ -1,3 +1,5 @@
+import {postIdPhotographer} from "../utils/changePage.js";
+
 export async function photographerTemplate(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
 
@@ -11,7 +13,8 @@ export async function photographerTemplate(data) {
            const containerPictureH2 = document.createElement("a");
            containerPictureH2.classList.add("containerPictureH2");
            containerPictureH2.dataset.id = id;
-           containerPictureH2.setAttribute("href", "photographer.html")
+           containerPictureH2.setAttribute("href", "photographer.html");
+           containerPictureH2.onclick = postIdPhotographer;
            const img = document.createElement( 'img' );
            img.setAttribute("src", picture);
            img.setAttribute("alt", name);
