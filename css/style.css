@@ -62,6 +62,22 @@ h1 {
     display: none;
 }
 
+.photographer_section article .priceInfo {
+    display: none;
+}
+
+.photographer_section article .taglineInfo {
+    display: none;
+}
+
+.photographer_section article .cityInfo {
+    display: none;
+}
+
+.photographer_section article .countryInfo {
+    display: none;
+}
+
 .photographer_section article .cityCountry {
     display: flex;
 }
