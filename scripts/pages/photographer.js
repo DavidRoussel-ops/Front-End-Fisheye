@@ -9,6 +9,11 @@ async function getPhotographers() {
     return responsePhotographer;
 }
 
+function getInfoPhotographer() {
+    const photographerData = JSON.parse(localStorage.getItem("photographe"));
+    console.log(photographerData);
+}
+getInfoPhotographer();
 async function getMedias() {
     const fetchCall = await fetch("http://localhost:8081/media");
     const responceMedia = await fetchCall.json();
