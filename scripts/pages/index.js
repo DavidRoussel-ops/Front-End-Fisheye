@@ -1,5 +1,5 @@
 import {photographerTemplate} from "../templates/photographer.js";
-import {postIdPhotographer} from "../utils/changePage.js";
+import {postInfoPhotographer} from "../utils/changePage.js";
 
 async function getPhotographers() {
     const reponce = await fetch("http://localhost:8081/photographers");
@@ -29,7 +29,7 @@ async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     await displayData(photographers);
-    postIdPhotographer();
+    postInfoPhotographer();
 }
 
 init();
