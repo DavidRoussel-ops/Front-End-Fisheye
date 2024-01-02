@@ -1,4 +1,4 @@
-export function postIdPhotographer() {
+export function postInfoPhotographer() {
     const linkPhotographer = document.querySelectorAll(".containerPictureH2");
     for (let i = 0; i < linkPhotographer.length; i++) {
         linkPhotographer[i].addEventListener("click", function (event) {
