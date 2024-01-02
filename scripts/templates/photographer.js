@@ -4,6 +4,10 @@ export async function photographerTemplate(data) {
     const picture = `assets/photographers/Sample Photos/Photographers ID Photos/${portrait}`;
 
      async function getUserCardDOM() {
+           let baseUrl = new URL ("http://localhost:63342/Front-End-Fisheye/photographer.html?");
+           let params = new URLSearchParams(baseUrl.search);
+           params.set("id", id);
+           console.log(params);
            const section = document.querySelector(".photographer_section");
            const article = document.createElement( 'article' );
            const cityCountry = document.createElement("div");
@@ -11,7 +15,7 @@ export async function photographerTemplate(data) {
            const containerPictureH2 = document.createElement("a");
            containerPictureH2.classList.add("containerPictureH2");
            containerPictureH2.dataset.id = id;
-           containerPictureH2.setAttribute("href", "photographer.html");
+           containerPictureH2.setAttribute("href", baseUrl + params.toString());
            const img = document.createElement( 'img' );
            img.setAttribute("src", picture);
            img.setAttribute("alt", name);
