@@ -7,7 +7,6 @@ export async function photographerTemplate(data) {
            let baseUrl = new URL ("http://localhost:63342/Front-End-Fisheye/photographer.html?");
            let params = new URLSearchParams(baseUrl.search);
            params.set("id", id);
-           console.log(params);
            const section = document.querySelector(".photographer_section");
            const article = document.createElement( 'article' );
            const cityCountry = document.createElement("div");
