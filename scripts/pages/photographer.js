@@ -1,25 +1,19 @@
 import {photographerIdTemplate} from "../templates/photographerId.js";
-import {createModal} from "../templates/modal.js";
+//import {createModal} from "../templates/modal.js";
 import {mediaTemplate} from "../templates/media.js";
 
-async function getMedias() {
-    const fetchCall = await fetch("http://localhost:8081/media");
-    const responceMedia = await fetchCall.json();
+let params = new URLSearchParams(document.location.search)
+let idPage = parseInt(params.get("id"));
+console.log(idPage);
+
+/*async function getMedias() {
+    const media = await fetch("http://localhost:8081/media").then(media => media.json());
+    let mediaTemplate = mediaTemplate();
+    let afficheMedia = (await mediaTemplate).getMediaResult(media);
 }
 
-async function displayMedias(data) {
-    const apiMedia = await fetch("http://localhost:8081/media");
-    const arrayMedias = await apiMedia.json();
+async function displayMedias(media) {
 
-    for (let i = 0; i < arrayMedias.length; i++) {
-        let idPhotographer = arrayMedias.map(arrayMedias => arrayMedias.photographerId = 243);
-    }
-
-    for (let media of arrayMedias) {
-        const mediaModel = mediaTemplate(media);
-        const mediaDOM = (await mediaModel).getMediaResult(media);
-        return mediaDOM
-    }
 }
 
 async function showModal() {
@@ -28,12 +22,12 @@ async function showModal() {
     const modal = (await base).modal();
     await modalContact.appendChild(modal);
 }
-
+*/
 async function init() {
     photographerIdTemplate();
-    const { medias } = await getMedias() || {};
-    await displayMedias(medias);
-    await showModal();
+    //const { medias } = await getMedias() || {};
+    //await displayMedias(medias);
+    //await showModal();
 }
 
 init();
