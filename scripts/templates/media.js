@@ -1,14 +1,21 @@
 export async function mediaTemplate(data) {
     const { id, photographerId, title, image, likes, date, price } = data;
 
-    const picture = `assets/photographers/Sample Photos/Mimi/${image}`;
+    let params = new URLSearchParams(document.location.search);
+    let urlId = photographerId;
+    urlId = parseInt(params.get("id"));
+
+    const localStorage = window.localStorage.getItem("photographe");
+    const photgrapherLocal = JSON.parse(localStorage);
+
+    const picture = `assets/photographers/Sample Photos/${photgrapherLocal.name}/${image}`;
 
     async function getMediaResult() {
         const mediaDisplay = document.querySelector(".media-display");
         const articleMedia = document.createElement("article");
         articleMedia.classList.add("mediaArticle");
         const linkLightbox = document.createElement("a");
-        linkLightbox.dataset.id = photographerId;
+        linkLightbox.dataset.id = urlId;
         const imgMedia = document.createElement("img");
         imgMedia.setAttribute("src", picture);
         imgMedia.setAttribute("alt", title);
