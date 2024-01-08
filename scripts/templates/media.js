@@ -1,5 +1,5 @@
 export async function mediaTemplate(data) {
-    const { id, photographerId, title, image, likes, date, price } = data;
+    const { id, photographerId, title, image, video, likes, date, price } = data;
 
     let params = new URLSearchParams(document.location.search);
     let urlId = photographerId;
@@ -21,18 +21,41 @@ export async function mediaTemplate(data) {
         imgMedia.setAttribute("alt", title);
         imgMedia.dataset.id = id;
         imgMedia.classList.add("imageMedia");
+        const videoMedia = document.createElement("img");
+        videoMedia.setAttribute("src", video);
+        videoMedia.setAttribute("alt", title);
+        videoMedia.classList.add("videoMedia");
+        const titleLikes = document.createElement("div");
+        titleLikes.classList.add("titleLikes");
+        const likeHeart = document.createElement("div");
+        likeHeart.classList.add("likeHeart");
+        const titleMedia = document.createElement("p");
+        titleMedia.textContent = title;
+        titleMedia.classList.add("titleMedia");
         const likeMedia = document.createElement("p");
         likeMedia.textContent = likes;
+        likeMedia.classList.add("likeMedia");
+        const heartMedia = document.createElement("img");
+        heartMedia.setAttribute("src", "https://img.icons8.com/windows/32/901C1C/filled-heart.png");
+        heartMedia.setAttribute("alt", "coeur");
+        heartMedia.classList.add("heartMedia");
         const dateMedia = document.createElement("p");
         dateMedia.textContent = date;
+        dateMedia.classList.add("dateMedia");
         const priceMedia = document.createElement("p");
         priceMedia.textContent = price;
+        priceMedia.classList.add("priceMedia");
         linkLightbox.appendChild(imgMedia);
+        likeHeart.appendChild(likeMedia);
+        likeHeart.appendChild(heartMedia);
+        titleLikes.appendChild(titleMedia);
+        titleLikes.appendChild(likeHeart);
         articleMedia.appendChild(linkLightbox);
-        articleMedia.appendChild(likeMedia);
+        articleMedia.appendChild(videoMedia);
+        articleMedia.appendChild(titleLikes);
         articleMedia.appendChild(dateMedia);
         articleMedia.appendChild(priceMedia);
         mediaDisplay.appendChild(articleMedia);
     }
-    return { id, photographerId, title, picture, likes, date, price, getMediaResult }
+    return { id, photographerId, title, picture, video, likes, date, price, getMediaResult }
 }
