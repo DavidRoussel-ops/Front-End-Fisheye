@@ -79,18 +79,43 @@
     font-size: 20px;
 }
 
-.photographer-header .pPrice {
+.photographer-header .likesPrices {
+    display: flex;
+    flex-direction: row-reverse;
     position: fixed;
     padding: 10px 20px 10px 40px;
     background-color: #D3573C;
     bottom: 0;
     right: 5%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.photographer-header .pPrice {
     margin-block-start: 0;
     margin-block-end: 0;
     font-size: 25px;
     font-weight: bolder;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+}
+
+.photographer-header .divTotalLikes {
+    display: flex;
+    margin-right: 50px;
+}
+
+.photographer-header .total {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.photographer-header .heartTotal {
+    width: 32px;
+    height: 32px;
+    border-radius: 0;
+    object-fit: none;
+    margin: 0;
 }
 
 .contact_button {
@@ -261,5 +286,9 @@ form input {
 }
 
 .priceMedia {
+    display: none;
+}
+
+.lightBox {
     display: none;
 }
