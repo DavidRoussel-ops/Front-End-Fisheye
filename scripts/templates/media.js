@@ -6,9 +6,10 @@ export async function mediaTemplate(data) {
     urlId = parseInt(params.get("id"));
 
     const localStorage = window.localStorage.getItem("photographe");
-    const photgrapherLocal = JSON.parse(localStorage);
+    const photographerLocal = JSON.parse(localStorage);
 
-    const picture = `assets/photographers/Sample Photos/${photgrapherLocal.name}/${image}`;
+    const picture = `assets/photographers/Sample Photos/${photographerLocal.name}/${image}`;
+    const videoMedia = `assets/photographers/Sample Photos/${photographerLocal.name}/${video}`;
 
     async function getMediaResult() {
         const mediaDisplay = document.querySelector(".media-display");
@@ -21,10 +22,10 @@ export async function mediaTemplate(data) {
         imgMedia.setAttribute("alt", title);
         imgMedia.dataset.id = id;
         imgMedia.classList.add("imageMedia");
-        const videoMedia = document.createElement("img");
-        videoMedia.setAttribute("src", video);
-        videoMedia.setAttribute("alt", title);
-        videoMedia.classList.add("videoMedia");
+        const playMedia = document.createElement("video");
+        playMedia.setAttribute("src", videoMedia);
+        playMedia.setAttribute("alt", title);
+        playMedia.classList.add("playMedia");
         const titleLikes = document.createElement("div");
         titleLikes.classList.add("titleLikes");
         const likeHeart = document.createElement("div");
@@ -45,13 +46,16 @@ export async function mediaTemplate(data) {
         const priceMedia = document.createElement("p");
         priceMedia.textContent = price;
         priceMedia.classList.add("priceMedia");
-        linkLightbox.appendChild(imgMedia);
+        if (image) {
+            linkLightbox.appendChild(imgMedia);
+        } else if (video) {
+            linkLightbox.appendChild(playMedia);
+        }
         likeHeart.appendChild(likeMedia);
         likeHeart.appendChild(heartMedia);
         titleLikes.appendChild(titleMedia);
         titleLikes.appendChild(likeHeart);
         articleMedia.appendChild(linkLightbox);
-        articleMedia.appendChild(videoMedia);
         articleMedia.appendChild(titleLikes);
         articleMedia.appendChild(dateMedia);
         articleMedia.appendChild(priceMedia);
