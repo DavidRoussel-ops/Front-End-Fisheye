@@ -22,10 +22,21 @@ async function displayMedias() {
     }
 }
 
+async function showTotalLikes() {
+    let likes = document.querySelectorAll(".likeMedia").innerText;
+    for (let i = 0; i < likes.length; i++) {
+        let arrayLikes = [likes[i].innerText];
+        console.log(arrayLikes);
+        console.log(likes[i].innerText);
+    }
+    console.log(likes);
+}
+
 async function init() {
     photographerIdTemplate();
     const { medias } = await showMedias();
     await displayMedias(medias);
+    await showTotalLikes();
 }
 
 init();
