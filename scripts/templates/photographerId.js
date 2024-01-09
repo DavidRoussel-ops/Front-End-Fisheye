@@ -23,6 +23,8 @@ export function photographerIdTemplate() {
     const taglinePhotographer = document.createElement("p");
     taglinePhotographer.textContent = infoPhotographeLocalStorage.tagline;
     taglinePhotographer.classList.add("pTagline");
+    const likesPrices = document.createElement("div");
+    likesPrices.classList.add("likesPrices");
     const pricePhotographer = document.createElement("p");
     pricePhotographer.textContent = infoPhotographeLocalStorage.price;
     pricePhotographer.classList.add("pPrice");
@@ -31,8 +33,9 @@ export function photographerIdTemplate() {
     containerCityCountry.appendChild(countryPhotographer);
     container.appendChild(containerCityCountry);
     container.appendChild(taglinePhotographer);
+    likesPrices.appendChild(pricePhotographer);
     section.appendChild(container);
     section.appendChild(btnModal);
     section.appendChild(img);
-    section.appendChild(pricePhotographer);
+    section.appendChild(likesPrices);
 }
