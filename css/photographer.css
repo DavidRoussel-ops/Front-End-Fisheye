@@ -226,6 +226,12 @@ form input {
     border-radius: 5px;
 }
 
+.playMedia {
+    width: 450px;
+    height: 400px;
+    border-radius: 5px;
+}
+
 .titleLikes {
     display: flex;
     justify-content: space-between;
