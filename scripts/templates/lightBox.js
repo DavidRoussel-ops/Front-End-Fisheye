@@ -9,8 +9,6 @@ export async function lightBoxTemplate(data) {
 
     async function getMediaLightBox() {
         const body = document.querySelector("body");
-        const lightboxContainer = document.createElement("div");
-        lightboxContainer.id = "lightboxContainer";
         const lightBox = document.createElement("div");
         lightBox.classList.add("lightBox");
         const btnCLose = document.createElement("button");
@@ -39,11 +37,10 @@ export async function lightBoxTemplate(data) {
         }
         containerLightbox.appendChild(titleLightbox);
         lightBox.appendChild(containerLightbox);
-        lightboxContainer.appendChild(lightBox);
-        lightboxContainer.appendChild(btnPrev);
-        lightboxContainer.appendChild(btnNext);
-        lightboxContainer.appendChild(btnCLose);
-        body.appendChild(lightboxContainer);
+        lightBox.appendChild(btnPrev);
+        lightBox.appendChild(btnNext);
+        lightBox.appendChild(btnCLose);
+        body.appendChild(lightBox);
     }
 
     return {photographerId, picture, videoMedia, title, getMediaLightBox }
