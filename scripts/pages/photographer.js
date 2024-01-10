@@ -23,13 +23,15 @@ async function displayMedias() {
 
 async function displayLightbox() {
 
-    const medias = await fetch("http://localhost:8081/media").then(medias => medias.json());
-    let params = new URLSearchParams(document.location.search);
-    let idPage = parseInt(params.get("id"));
-    let template = lightBoxTemplate(medias);
-    let templatePhotographerId = (await template).photographerId;
-    if (idPage === templatePhotographerId) {
-        await (await template).getMediaLightBox();
+    const medias = await fetch("http://localhost:8081/media").then(media => media.json());
+    for (let media of medias) {
+        let params = new URLSearchParams(document.location.search);
+        let idPage = parseInt(params.get("id"));
+        let template = lightBoxTemplate(media);
+        let templatePhotographerId = (await template).photographerId;
+        if (idPage === templatePhotographerId) {
+            await (await template).getMediaLightBox();
+        }
     }
 }
 
