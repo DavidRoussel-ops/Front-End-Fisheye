@@ -114,7 +114,7 @@ function checkLastname(champ) {
 
 function checkEmail(champ) {
     const inputEmail = document.querySelector(".input-email");
-    let emailRegExp = new RegExp("[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]\\.[a-zA-Z0-9._-]+");
+    const emailRegExp = new RegExp("[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]\\.[a-zA-Z0-9._-]+");
     if (!emailRegExp.test(champ)) {
         inputEmail.classList.add("errorInput");
         let spanErrorEmail = document.getElementById("errorMessageEmail");
@@ -169,7 +169,8 @@ function validateForm() {
     const localStorage = window.localStorage.getItem("photographe");
     const localPhotographer = JSON.parse(localStorage);
     const btnSubmit = document.querySelector(".send_button");
-    btnSubmit.addEventListener("click", () => {
+    btnSubmit.addEventListener("click", (e) => {
+        e.preventDefault();
         if (checkFirstname(inputFirstname.value) &&
         checkLastname(inputLastname.value) &&
         checkEmail(inputEmail.value) &&
