@@ -1,17 +1,15 @@
 export function photographerIdTemplate() {
     const infoLocalStorage = window.localStorage.getItem("photographe");
     const infoPhotographeLocalStorage = JSON.parse(infoLocalStorage);
-    console.log(infoPhotographeLocalStorage.name);
-    console.log(infoPhotographeLocalStorage.picture);
     const section = document.querySelector(".photographer-header");
     const btnModal = document.querySelector(".contact_button");
     const container = document.createElement("div");
     container.classList.add("cardPhotographer");
     const img = document.createElement("img");
     img.setAttribute("src", infoPhotographeLocalStorage.picture);
+    img.setAttribute("alt", infoPhotographeLocalStorage.name);
     const namePhotographer = document.createElement("h1");
     namePhotographer.textContent = infoPhotographeLocalStorage.name;
-    console.log(namePhotographer);
     const containerCityCountry = document.createElement("div");
     containerCityCountry.classList.add("cityCountry");
     const cityPhotographer = document.createElement("p");
