@@ -8,7 +8,7 @@ export async function lightBoxTemplate(data) {
     const videoMedia = `assets/photographers/Sample Photos/${photographerLocal.name}/${video}`;
 
     async function getMediaLightBox() {
-        const body = document.querySelector("body");
+        //const body = document.querySelector("body");
         const lightBox = document.createElement("div");
         lightBox.classList.add("lightBox");
         const btnCLose = document.createElement("button");
@@ -40,7 +40,7 @@ export async function lightBoxTemplate(data) {
         lightBox.appendChild(btnPrev);
         lightBox.appendChild(btnNext);
         lightBox.appendChild(btnCLose);
-        body.appendChild(lightBox);
+        //body.appendChild(lightBox);
     }
 
     return {photographerId, picture, videoMedia, title, getMediaLightBox }
