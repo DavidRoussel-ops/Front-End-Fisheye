@@ -16,7 +16,9 @@ export async function mediaTemplate(data) {
         const articleMedia = document.createElement("article");
         articleMedia.classList.add("mediaArticle");
         const linkLightbox = document.createElement("a");
+        linkLightbox.setAttribute("href", "#")
         linkLightbox.dataset.id = urlId;
+        linkLightbox.classList.add("linkLightbox");
         const imgMedia = document.createElement("img");
         imgMedia.setAttribute("src", picture);
         imgMedia.setAttribute("alt", title);
