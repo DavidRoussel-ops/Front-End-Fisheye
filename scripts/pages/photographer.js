@@ -1,6 +1,8 @@
 import {photographerIdTemplate} from "../templates/photographerId.js";
 import {mediaTemplate} from "../templates/media.js";
 import {lightBoxTemplate} from "../templates/lightBox.js";
+import {postInfoMedia} from "../utils/infoMedia.js";
+import {selectLikes} from "../utils/selectFunction.js";
 
 async function showMedias() {
     const medias = await fetch("http://localhost:8081/media").then(media => media.json());
@@ -11,10 +13,10 @@ async function displayMedias() {
 
     const medias = await fetch("http://localhost:8081/media").then(medias => medias.json());
     for (let media of medias) {
-        let params = new URLSearchParams(document.location.search)
-        let idPage = parseInt(params.get("id"));
-        let template = mediaTemplate(media);
-        let templatePhotographerId = (await template).photographerId;
+        const params = new URLSearchParams(document.location.search)
+        const idPage = parseInt(params.get("id"));
+        const template = mediaTemplate(media);
+        const templatePhotographerId = (await template).photographerId;
         if (idPage === templatePhotographerId) {
             await (await template).getMediaResult();
         }
@@ -22,7 +24,9 @@ async function displayMedias() {
 }
 
 async function displayLightbox() {
-
+    const body = document.querySelector("body");
+    const lightboxContainer = document.createElement("div");
+    lightboxContainer.classList.add("lightboxContainer");
     const medias = await fetch("http://localhost:8081/media").then(media => media.json());
     for (let media of medias) {
         let params = new URLSearchParams(document.location.search);
@@ -33,6 +37,7 @@ async function displayLightbox() {
             await (await template).getMediaLightBox();
         }
     }
+    body.appendChild(lightboxContainer);
 }
 
 async function showTotalLikes() {
@@ -66,6 +71,8 @@ async function init() {
     await displayMedias(medias);
     await displayLightbox(medias);
     await showTotalLikes();
+    await selectLikes();
+    postInfoMedia();
 }
 
 init();
