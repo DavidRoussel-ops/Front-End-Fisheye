@@ -2,7 +2,7 @@ import {photographerIdTemplate} from "../templates/photographerId.js";
 import {mediaTemplate} from "../templates/media.js";
 import {lightBoxTemplate} from "../templates/lightBox.js";
 import {postInfoMedia} from "../utils/infoMedia.js";
-import {selectLikes} from "../utils/selectFunction.js";
+import {selectFunction} from "../utils/selectFunction.js";
 
 async function showMedias() {
     const medias = await fetch("http://localhost:8081/media").then(media => media.json());
@@ -10,7 +10,7 @@ async function showMedias() {
 }
 
 async function displayMedias() {
-
+    const select = document.querySelector(".selectOption");
     const medias = await fetch("http://localhost:8081/media").then(medias => medias.json());
     for (let media of medias) {
         const params = new URLSearchParams(document.location.search)
@@ -21,6 +21,34 @@ async function displayMedias() {
             await (await template).getMediaResult();
         }
     }
+    select.addEventListener("change", async function (event) {
+        const medias = await fetch("http://localhost:8081/media").then(medias => medias.json());
+        switch (event.target.value) {
+            case "popularity" :
+                for (let media of medias) {
+                    const params = new URLSearchParams(document.location.search)
+                    const idPage = parseInt(params.get("id"));
+                    const template = mediaTemplate(media);
+                    console.log(template);
+                    const templateTilte = (await template).title;
+                    console.log(templateTilte);
+                    templateTilte.sort();
+                    console.log(templateTilte);
+                    console.log(templateTilte);
+                    const templatePhotographerId = (await template).photographerId;
+                    if (idPage === templatePhotographerId) {
+                        await (await templateTilte).getMediaResult();
+                    }
+                }
+                break;
+            case "date" :
+                alert("Vous étes sur la liste ordonnée selon la date des photos");
+                break;
+            case "title" :
+                alert("Vous étes sur la liste ordonnée selon le titre des photos");
+                break;
+        }
+    });
 }
 
 async function displayLightbox() {
@@ -67,11 +95,11 @@ async function showTotalLikes() {
 
 async function init() {
     photographerIdTemplate();
+    selectFunction();
     const { medias } = await showMedias();
     await displayMedias(medias);
     await displayLightbox(medias);
     await showTotalLikes();
-    await selectLikes();
     postInfoMedia();
 }
 
