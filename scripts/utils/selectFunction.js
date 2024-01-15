@@ -1,6 +1,6 @@
 import {mediaTemplate} from "../templates/media.js";
 
-export async function selectLikes() {
+/*export async function selectLikes() {
     const optionPopularite = document.querySelector(".popularite");
     optionPopularite.addEventListener("click", function () {
         const medias = fetch("http://localhost:8081/media").then(medias => medias.json());
@@ -19,6 +19,10 @@ export async function selectLikes() {
             }
         }
     })
+
+}*/
+
+export function selectFunction() {
 
 }
 
