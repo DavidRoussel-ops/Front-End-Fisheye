@@ -1,4 +1,4 @@
-export function postInfoMedia() {
+/*export function postInfoMedia() {
     const linkMedia = document.querySelectorAll(".linkLightbox");
     for (let i = 0; i < linkMedia.length; i++) {
         linkMedia[i].addEventListener("click", function (event) {
@@ -14,4 +14,4 @@ export function postInfoMedia() {
             window.localStorage.setItem("media", JSON.stringify(infoMedia));
         });
     }
-}
+}*/
