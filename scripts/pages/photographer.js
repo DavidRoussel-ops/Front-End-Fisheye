@@ -1,7 +1,6 @@
 import {photographerIdTemplate} from "../templates/photographerId.js";
 import {mediaTemplate} from "../templates/media.js";
-import {lightBoxTemplate} from "../templates/lightBox.js";
-import {postInfoMedia} from "../utils/infoMedia.js";
+//import {postInfoMedia} from "../utils/infoMedia.js";
 import {selectFunction} from "../utils/selectFunction.js";
 
 async function showMedias() {
@@ -51,23 +50,6 @@ async function displayMedias() {
     });
 }
 
-async function displayLightbox() {
-    const body = document.querySelector("body");
-    const lightboxContainer = document.createElement("div");
-    lightboxContainer.classList.add("lightboxContainer");
-    const medias = await fetch("http://localhost:8081/media").then(media => media.json());
-    for (let media of medias) {
-        let params = new URLSearchParams(document.location.search);
-        let idPage = parseInt(params.get("id"));
-        let template = lightBoxTemplate(media);
-        let templatePhotographerId = (await template).photographerId;
-        if (idPage === templatePhotographerId) {
-            await (await template).getMediaLightBox();
-        }
-    }
-    body.appendChild(lightboxContainer);
-}
-
 async function showTotalLikes() {
     const likesPrices = document.querySelector(".likesPrices");
     let likes = document.querySelectorAll(".likeMedia");
@@ -98,9 +80,8 @@ async function init() {
     selectFunction();
     const { medias } = await showMedias();
     await displayMedias(medias);
-    await displayLightbox(medias);
     await showTotalLikes();
-    postInfoMedia();
+    //postInfoMedia();
 }
 
 init();
