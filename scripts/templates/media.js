@@ -1,3 +1,5 @@
+import {openLightbox} from "../utils/utilsLightbox.js";
+
 export async function mediaTemplate(data) {
     const { id, photographerId, title, image, video, likes, date, price } = data;
 
@@ -16,9 +18,10 @@ export async function mediaTemplate(data) {
         const articleMedia = document.createElement("article");
         articleMedia.classList.add("mediaArticle");
         const linkLightbox = document.createElement("a");
-        linkLightbox.setAttribute("href", "#")
+        linkLightbox.setAttribute("href", "javascript:void(0)")
         linkLightbox.dataset.id = urlId;
         linkLightbox.classList.add("linkLightbox");
+        linkLightbox.onclick = function () {openLightbox()};
         const imgMedia = document.createElement("img");
         imgMedia.setAttribute("src", picture);
         imgMedia.setAttribute("alt", title);
@@ -48,6 +51,27 @@ export async function mediaTemplate(data) {
         const priceMedia = document.createElement("p");
         priceMedia.textContent = price;
         priceMedia.classList.add("priceMedia");
+        const lightBox = document.createElement("div");
+        lightBox.classList.add("lightBox");
+        const btnCLose = document.createElement("button");
+        btnCLose.classList.add("btnCloseLightbox");
+        const btnNext = document.createElement("button");
+        btnNext.classList.add("btnNextLightbox");
+        const btnPrev = document.createElement("button");
+        btnPrev.classList.add("btnPrevLightbox");
+        const containerLightbox = document.createElement("div");
+        containerLightbox.classList.add("containerLightbox");
+        const imgLightbox = document.createElement("img");
+        imgLightbox.setAttribute("src", picture);
+        imgLightbox.setAttribute("alt", "photo");
+        imgLightbox.classList.add("imgLightbox");
+        const videoLightbox = document.createElement("video");
+        videoLightbox.setAttribute("src", videoMedia);
+        videoLightbox.setAttribute("alt", "video");
+        videoLightbox.classList.add("videoLightbox");
+        const titleLightbox = document.createElement("p");
+        titleLightbox.textContent = title;
+        titleLightbox.classList.add("titleLightbox");
         if (image) {
             linkLightbox.appendChild(imgMedia);
         } else if (video) {
@@ -57,6 +81,17 @@ export async function mediaTemplate(data) {
         likeHeart.appendChild(heartMedia);
         titleLikes.appendChild(titleMedia);
         titleLikes.appendChild(likeHeart);
+        containerLightbox.appendChild(titleLightbox);
+        if (image) {
+            lightBox.appendChild(imgLightbox);
+        } else if (video) {
+            lightBox.appendChild(videoLightbox);
+        }
+        lightBox.appendChild(containerLightbox);
+        lightBox.appendChild(btnPrev);
+        lightBox.appendChild(btnNext);
+        lightBox.appendChild(btnCLose);
+        articleMedia.appendChild(lightBox);
         articleMedia.appendChild(linkLightbox);
         articleMedia.appendChild(titleLikes);
         articleMedia.appendChild(dateMedia);
